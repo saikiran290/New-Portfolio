@@ -1,0 +1,222 @@
+/* ─── Preloader Overlay ────────────────────────────────────── */
+.preloader-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #060913;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.preloader-overlay.fade-out {
+  opacity: 0;
+  transform: scale(1.05);
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* ─── Ambient Glow Lights ─────────────────────────────────── */
+.preloader-glow-top {
+  position: absolute;
+  top: -150px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.25), transparent 70%);
+  pointer-events: none;
+}
+
+.preloader-glow-bottom {
+  position: absolute;
+  bottom: -150px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.2), transparent 70%);
+  pointer-events: none;
+}
+
+/* ─── Content Box ─────────────────────────────────────────── */
+.preloader-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+/* ─── Welcome Pill Badge ─────────────────────────────────── */
+.preloader-welcome-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 1rem;
+  background: rgba(99, 102, 241, 0.12);
+  border: 1px solid rgba(99, 102, 241, 0.35);
+  border-radius: var(--radius-full);
+  color: var(--color-cyan);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  margin-bottom: 1.4rem;
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.25);
+  animation: badgeFloat 3s ease-in-out infinite;
+}
+
+.welcome-icon {
+  color: #38bdf8;
+}
+
+@keyframes badgeFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+/* ─── Glowing Logo Symbol ─────────────────────────────────── */
+.preloader-logo-box {
+  position: relative;
+  width: 78px;
+  height: 78px;
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-halo-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px dashed rgba(6, 182, 212, 0.6);
+  animation: preloaderSpin 8s linear infinite;
+}
+
+.logo-inner-circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-indigo), var(--color-cyan));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    0 0 30px rgba(99, 102, 241, 0.6), 
+    0 0 60px rgba(6, 182, 212, 0.3);
+  animation: logoPulse 2s ease-in-out infinite;
+}
+
+.preloader-icon {
+  color: #ffffff;
+}
+
+@keyframes preloaderSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes logoPulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.06); }
+}
+
+/* ─── Brand Text ─────────────────────────────────────────── */
+.preloader-brand {
+  font-family: var(--font-heading);
+  font-size: 1.85rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+  margin-bottom: 0.2rem;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.brand-prefix, .brand-suffix {
+  color: var(--color-indigo);
+  font-family: var(--font-code);
+  font-weight: 600;
+}
+
+.brand-name {
+  background: linear-gradient(135deg, #ffffff 40%, var(--color-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand-dot {
+  color: var(--color-cyan);
+}
+
+.preloader-tagline {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1.2rem;
+  font-weight: 500;
+}
+
+/* ─── Status Text ────────────────────────────────────────── */
+.preloader-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  font-family: var(--font-code);
+  margin-bottom: 1rem;
+  min-height: 22px;
+}
+
+.status-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-cyan);
+  box-shadow: 0 0 10px var(--color-cyan);
+  animation: dotPulse 1.5s infinite ease-in-out;
+}
+
+@keyframes dotPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.4); }
+}
+
+/* ─── Progress Bar ────────────────────────────────────────── */
+.preloader-progress-track {
+  width: 100%;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin-bottom: 0.6rem;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.preloader-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-indigo), var(--color-cyan), var(--color-purple));
+  border-radius: var(--radius-full);
+  transition: width 0.15s ease-out;
+  box-shadow: 0 0 12px rgba(6, 182, 212, 0.8);
+}
+
+/* ─── Percentage Counter ─────────────────────────────────── */
+.preloader-percent {
+  font-family: var(--font-code);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-cyan);
+  letter-spacing: 1px;
+}
