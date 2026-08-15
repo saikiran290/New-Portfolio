@@ -22,7 +22,7 @@ const projects = [
     description:
       'Built a full-stack application for classifying spam emails and generating concise summaries using NLP-based workflows.',
     github: 'https://github.com/saikiran290/mini_project.git',
-    live: '',
+    live: 'https://mini-project-peach-five.vercel.app/',
     image: 'https://sparkle.io/wp-content/uploads/2025/01/SPAM-TRIGGER-WORDS.jpg',
   },
   {
