@@ -41,7 +41,7 @@ const projects = [
     tech: ['React.js', 'Node.js', 'Express', 'MongoDB'],
     description:
       'Developed a job portal enabling users to register, explore roles, and apply through a responsive web experience.',
-    github: 'https://github.com/saikiran290/Job_Portal.git',
+    github: 'https://github.com/saikiran290/jobPortal',
     live: '',
     image: job,
   },
